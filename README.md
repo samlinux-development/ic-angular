@@ -33,7 +33,7 @@ Only a few npm packages were added to the standard npm packages of Angular. Thes
 # terminal 1
 dfx start --clean --background
 
-#terminal 2
+# terminal 2
 mkdir myapp && cd myapp
 npx degit https://github.com/samlinux-development/ic-angular
 npm install
@@ -56,12 +56,12 @@ dfx deploy backend
 # which has to be executed to let Angular know about the environment variables.
 npm run start --network=local
 
-echo http://$(dfx canister id frontend).localhost:4943
 ```
 ## Deployment to Local Replica
 
 ```bash
 npm run deploy --network=local
+echo http://$(dfx canister id frontend).localhost:4943
 ```
 
 ## Deployment to Motoko Playground
