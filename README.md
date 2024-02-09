@@ -1,27 +1,75 @@
-# Angular
+<p align="left" >
+  <img width="240"  src="src/assets/icAcademy.png">
+</p>
+
+# Angular StarterKit for the Internet Computer
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.2.
 
-## Development server
+This starterKit is intended to make it easier for you to get started with development on the Internet Computer with Angular. It is based on the [Angular](https://angular.io/) framework and the [Internet Computer SDK](https://sdk.dfinity.org/).
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+It includes a greet service which is triggered by a button click or on page load. The backend service is implemented in Motoko. It uses the default ready-to-use actor and is therefore comparable to all other starter kits on the market.
 
-## Code scaffolding
+This starter kit does not use the usual approach of a **custom Webpack** configuration. The approach is to add the environment variables into the Angular environment files according to the deployment situation. The following deployment situations are currently covered:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- local (a local replica)
+- playground (Motoko Playground)
+- ic (the Internet Computer mainnet)
 
-## Build
+Only a few npm packages were added to the standard npm packages of Angular. These would be: 
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- @dfinity/agent@0.20.2
+- @dfinity/candid@0.20.2
+- @dfinity/principal@0.20.2
+- @types/globalthis@1.0.4
+- globalthis@1.0.3
+- @types/node@20.11.16
+- dotenv@16.4.1
+- ejs@3.1.9
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## First Setup
+```bash
+# terminal 1
+dfx start --clean --background
 
-## Running end-to-end tests
+#terminal 2
+mkdir myapp && cd myapp
+npx degit https://github.com/samlinux-development/ic-angular
+npm install
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Start Development Server
+
+```bash
+# in terminal 2
+# for the first time
+dfx deploy backend
+
+# If you changes something in the backend canister reinstall it with dfx deploy backend any time.
+
+# Every time you want to start the frontend or change the deployment environment, 
+# because of the environment variables.
+# Do not use ng serve in that context, because of the deploy.js script 
+# which has to be executed to let Angular know about the environment variables.
+npm run start --network=local
+
+echo http://$(dfx canister id frontend).localhost:4943
+```
+## Deployment to Local Replica
+
+```bash
+npm run deploy --network=local
+```
+
+## Deployment to Motoko Playground
+
+```bash
+npm run deploy --network=playground
+```
+
+## Deployment to Internet Computer Mainnet
+Is not tested by now. But it should work. 
+
