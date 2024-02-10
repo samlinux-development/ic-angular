@@ -27,7 +27,14 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "allowedCommonJsDependencies": [
+              "buffer",
+              "base64-arraybuffer",
+              "simple-cbor",
+              "borc",
+              "globalthis/polyfill"
+           ]
           },
           "configurations": {
             "production": {
