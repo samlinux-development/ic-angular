@@ -10,7 +10,7 @@
         "backend"
       ],
       "source": [
-        "dist/angular/browser"
+        "dist/angular"
       ],
       "type": "assets"
     }
