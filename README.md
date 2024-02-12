@@ -29,7 +29,7 @@ Only a few npm packages were added to the standard npm packages of Angular. Thes
 ## First Setup
 ```bash
 # terminal 1
-dfx start --clean --background
+dfx start --clean
 
 # terminal 2
 mkdir myapp && cd myapp
