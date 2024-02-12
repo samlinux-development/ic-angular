@@ -10,7 +10,10 @@ This starterKit is intended to make it easier for you to get started with develo
 
 It includes a greet service which is triggered by a button click or on page load. The backend service is implemented in Motoko. It uses the default ready-to-use actor and is therefore comparable to all other starter kits on the market.
 
-This starterKit use the usual approach of a **custom Webpack** configuration.
+This starterKit use the usual approach of a **custom Webpack** configuration. This repository has currently two branches. 
+
+1. The angular-ic-custom-webpack branch uses a custom-webpack configuration. This branch is also the default one.
+2. The main branch uses a different approch. It uses the environment.ts file to set the environment variables. Although this is not the best approach as the variables from “process.env” need to be replaced with those from the environment files.
 
 Only a few npm packages were added to the standard npm packages of Angular. These would be: 
 
@@ -22,7 +25,6 @@ Only a few npm packages were added to the standard npm packages of Angular. Thes
 - @types/node@20.11.16
 - dotenv@16.4.1
 - @angular-builders/custom-webpack@17.0.0
-
 
 ## First Setup
 ```bash
@@ -40,8 +42,8 @@ npm install
 
 ```bash
 # in terminal 2
-# for the first time
-dfx deploy backend
+# for the first time to create .env file
+dfx deploy
 
 # start local development server
 ng serve
