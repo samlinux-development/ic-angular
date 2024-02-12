@@ -1,20 +1,26 @@
 import { Injectable } from '@angular/core';
 import { createActor } from '../declarations/backend';
-import { environment } from '../environments/environment';
+import type { _SERVICE } from "../declarations/backend/backend.did";
+import { ActorSubclass } from "@dfinity/agent";
 
 @Injectable({
   providedIn: 'root'
 })
 export class IcService {
-  constructor() { }
-  public async greet(name:string){
-    // Create an actor to interact with the IC for a particular canister ID
-    const canisterId = environment.BACKEND_CANISTER_ID;
-    const actor = createActor(canisterId, { agentOptions: { } });
-    
-    console.log('check environment', environment);
+  private readonly CANISTER_ID_BACKEND = process.env['CANISTER_ID_BACKEND'];
+  private readonly Actor: ActorSubclass<_SERVICE>;
 
-    return await actor.greet(name);
-    
+  constructor() {
+    if(this.CANISTER_ID_BACKEND == undefined){
+      throw new Error()
+    }
+
+    // Create an actor to interact with the IC for a particular canister ID
+    this.Actor = createActor(this.CANISTER_ID_BACKEND, { agentOptions: {} });
+    console.log('canisterId:', this.CANISTER_ID_BACKEND);
+  }
+
+  public async greet(name:string){
+    return await this.Actor.greet(name);
   }
 }
