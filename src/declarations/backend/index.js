@@ -4,17 +4,16 @@ import { Actor, HttpAgent } from "@dfinity/agent";
 import { idlFactory } from "./backend.did.js";
 export { idlFactory } from "./backend.did.js";
 
-// add the following lines to the ready to use actor
-import { environment } from '../../environments/environment';
-const canisterId = environment.BACKEND_CANISTER_ID;
-const DFX_NETWORK = environment.DFX_NETWORK;
-const DFX_HOST = environment.DFX_HOST;
-//----------------------------------------------
+/* CANISTER_ID is replaced by webpack based on node environment
+ * Note: canister environment variable will be standardized as
+ * process.env.CANISTER_ID_<CANISTER_NAME_UPPERCASE>
+ * beginning in dfx 0.15.0
+ */
+export const canisterId =
+  process.env.CANISTER_ID_BACKEND ||
+  process.env.BACKEND_CANISTER_ID;
 
 export const createActor = (canisterId, options = {}) => {
-  options.agentOptions = {};
-  options.agentOptions.host = DFX_HOST;
-
   const agent = options.agent || new HttpAgent({ ...options.agentOptions });
 
   if (options.agent && options.agentOptions) {
@@ -24,7 +23,7 @@ export const createActor = (canisterId, options = {}) => {
   }
 
   // Fetch root key for certificate validation during development
-  if (DFX_NETWORK !== "ic") {
+  if (process.env.DFX_NETWORK !== "ic") {
     agent.fetchRootKey().catch((err) => {
       console.warn(
         "Unable to fetch root key. Check to ensure that your local replica is running"

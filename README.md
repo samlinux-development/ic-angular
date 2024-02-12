@@ -10,22 +10,18 @@ This starterKit is intended to make it easier for you to get started with develo
 
 It includes a greet service which is triggered by a button click or on page load. The backend service is implemented in Motoko. It uses the default ready-to-use actor and is therefore comparable to all other starter kits on the market.
 
-This starter kit does not use the usual approach of a **custom Webpack** configuration. The approach is to add the environment variables into the Angular environment files according to the deployment situation. The following deployment situations are currently covered:
-
-- local (a local replica)
-- playground (Motoko Playground)
-- ic (the Internet Computer mainnet)
+This starterKit use the usual approach of a **custom Webpack** configuration.
 
 Only a few npm packages were added to the standard npm packages of Angular. These would be: 
 
-- @dfinity/agent@0.20.2
-- @dfinity/candid@0.20.2
-- @dfinity/principal@0.20.2
+- @dfinity/agent@0.21.4
+- @dfinity/candid@0.21.4
+- @dfinity/principal@0.21.4
 - @types/globalthis@1.0.4
 - globalthis@1.0.3
 - @types/node@20.11.16
 - dotenv@16.4.1
-- ejs@3.1.9
+- @angular-builders/custom-webpack@17.0.0
 
 
 ## First Setup
@@ -37,7 +33,6 @@ dfx start --clean --background
 mkdir myapp && cd myapp
 npx degit https://github.com/samlinux-development/ic-angular
 npm install
-
 ```
 
 
@@ -48,26 +43,21 @@ npm install
 # for the first time
 dfx deploy backend
 
-# If you changes something in the backend canister reinstall it with dfx deploy backend any time.
-
-# Every time you want to start the frontend or change the deployment environment, 
-# because of the environment variables.
-# Do not use ng serve in that context, because of the deploy.js script 
-# which has to be executed to let Angular know about the environment variables.
-npm run start --network=local
+# start local development server
+ng serve
 
 ```
-## Deployment to Local Replica
+## Deployment to local Replica
 
 ```bash
-npm run deploy --network=local
+dfx deploy
 echo http://$(dfx canister id frontend).localhost:4943
 ```
 
 ## Deployment to Motoko Playground
 
 ```bash
-npm run deploy --network=playground
+dfx deploy --playground
 ```
 
 ## Deployment to Internet Computer Mainnet
