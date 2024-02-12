@@ -10,7 +10,7 @@ This starterKit is intended to make it easier for you to get started with develo
 
 It includes a greet service which is triggered by a button click or on page load. The backend service is implemented in Motoko. It uses the default ready-to-use actor and is therefore comparable to all other starter kits on the market.
 
-This starterKit use the usual approach of a **custom Webpack** configuration. This repository has currently two branches. 
+This starterKit uses the usual approach of a **custom Webpack** configuration. This repository has currently two branches. 
 
 1. The angular-ic-custom-webpack branch uses a custom-webpack configuration. This branch is also the default one.
 2. The main branch uses a different approch. It uses the environment.ts file to set the environment variables. Although this is not the best approach as the variables from “process.env” need to be replaced with those from the environment files.
