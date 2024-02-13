@@ -16,11 +16,15 @@ This starter kit does not use the usual approach of a **custom Webpack** configu
 - playground (Motoko Playground)
 - ic (the Internet Computer mainnet)
 
+It uses an own actor service to get ride of the ready to use actor in src/declarations/backend/index.js. The actor service is implemented in src/app/services/actor.service.ts.
+
+In this configuration esbuild is used as well.
+
 Only a few npm packages were added to the standard npm packages of Angular. These would be: 
 
-- @dfinity/agent@0.20.2
-- @dfinity/candid@0.20.2
-- @dfinity/principal@0.20.2
+- @dfinity/agent@0.21.4
+- @dfinity/candid@0.21.4
+- @dfinity/principal@0.21.4
 - @types/globalthis@1.0.4
 - globalthis@1.0.3
 - @types/node@20.11.16
@@ -31,7 +35,7 @@ Only a few npm packages were added to the standard npm packages of Angular. Thes
 ## First Setup
 ```bash
 # terminal 1
-dfx start --clean --background
+dfx start --clean
 
 # terminal 2
 mkdir myapp && cd myapp
