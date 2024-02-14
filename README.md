@@ -17,9 +17,9 @@ This starterKit uses the usual approach of a **custom Webpack** configuration. T
 
 Only a few npm packages were added to the standard npm packages of Angular. These would be: 
 
-- @dfinity/agent@0.21.4
-- @dfinity/candid@0.21.4
-- @dfinity/principal@0.21.4
+- @dfinity/agent@1.0.0
+- @dfinity/candid@1.0.0
+- @dfinity/principal@1.0.0
 - @types/globalthis@1.0.4
 - globalthis@1.0.3
 - @types/node@20.11.16
