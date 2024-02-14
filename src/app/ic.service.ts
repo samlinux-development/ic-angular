@@ -9,6 +9,8 @@ import {idlFactory} from "../declarations/backend/backend.did.js";
 @Injectable({
   providedIn: 'root'
 })
+
+// own service to interact with the IC
 export class IcService {
   private readonly CANISTER_ID_BACKEND = process.env['CANISTER_ID_BACKEND'];
   private readonly DFX_NETWORK = process.env['DFX_NETWORK'];
