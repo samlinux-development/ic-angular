@@ -33,7 +33,7 @@ dfx start --clean
 
 # terminal 2
 mkdir myapp && cd myapp
-npx degit https://github.com/samlinux-development/ic-angular
+npx degit https://github.com/samlinux-development/ic-angular.git#angular-ic-custom-webpack
 npm install
 ```
 
