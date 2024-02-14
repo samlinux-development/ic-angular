@@ -10,6 +10,7 @@ import {idlFactory} from "../declarations/backend/backend.did.js";
 @Injectable({
   providedIn: 'root'
 })
+// own service to get rid of the ready to use actor
 export class IcService {
   private readonly CANISTER_ID_BACKEND = environment.BACKEND_CANISTER_ID;
   private readonly DFX_NETWORK = environment.DFX_NETWORK;
