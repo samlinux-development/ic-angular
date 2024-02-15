@@ -26,6 +26,8 @@ Only a few npm packages were added to the standard npm packages of Angular. Thes
 - dotenv@16.4.1
 - @angular-builders/custom-webpack@17.0.0
 
+See also our blog post on IC Academy [Angular StarterKit for the Internet Computer](https://blog.icacademy.at/blog/angular-ic-starter).
+
 ## First Setup
 ```bash
 # terminal 1
