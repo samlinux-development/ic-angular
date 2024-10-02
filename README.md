@@ -4,11 +4,11 @@
 
 # Angular StarterKit for the Internet Computer
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.2.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.0
 
 This starterKit is intended to make it easier for you to get started with development on the Internet Computer with Angular. It is based on the [Angular](https://angular.io/) framework and the [Internet Computer SDK](https://sdk.dfinity.org/).
 
-It includes a greet service which is triggered by a button click or on page load. The backend service is implemented in Motoko. It uses the default ready-to-use actor and is therefore comparable to all other starter kits on the market.
+It includes a classic read and store service which is triggered by button click. The backend service is implemented in Motoko.
 
 This starter kit does not use the usual approach of a **custom Webpack** configuration. The approach is to add the environment variables into the Angular environment files according to the deployment situation. The following deployment situations are currently covered:
 
@@ -16,15 +16,13 @@ This starter kit does not use the usual approach of a **custom Webpack** configu
 - playground (Motoko Playground)
 - ic (the Internet Computer mainnet)
 
-It uses an own actor service to get ride of the ready to use actor in src/declarations/backend/index.js. The actor service is implemented in src/app/services/actor.service.ts.
+It uses an own actor service to get ride of the ready to use actor in src/declarations/backend/index.js. The actor service is implemented in ```src/app/ic.service.ts```.
 
 In this configuration esbuild is used as well.
 
 Only a few npm packages were added to the standard npm packages of Angular. These would be: 
 
-- @dfinity/agent@1.0.0
-- @dfinity/candid@1.0.0
-- @dfinity/principal@1.0.0
+- @dfinity/agent@2.1.2
 - @types/globalthis@1.0.4
 - globalthis@1.0.3
 - @types/node@20.11.16
@@ -32,6 +30,11 @@ Only a few npm packages were added to the standard npm packages of Angular. Thes
 - ejs@3.1.9
 
 See also our blog post on IC Academy [Angular StarterKit for the Internet Computer](https://blog.icacademy.at/blog/angular-ic-starter).
+
+## Prerequisites
+Make sure node.js verson 18.19 or higher is installed on your system. You can download it from [nodejs.org](https://nodejs.org/).
+
+Make sure that the DFINITY Canister SDK is installed on your system. You can download it from [sdk.dfinity.org](https://sdk.dfinity.org/).
 
 ## First Setup
 ```bash
@@ -42,9 +45,7 @@ dfx start --clean
 mkdir myapp && cd myapp
 npx degit https://github.com/samlinux-development/ic-angular
 npm install
-
 ```
-
 
 ## Start Development Server
 
@@ -60,21 +61,21 @@ dfx deploy backend
 # Do not use ng serve in that context, because of the deploy.js script 
 # which has to be executed to let Angular know about the environment variables.
 npm run start --network=local
-
 ```
-## Deployment to Local Replica
+
+## Deployment to local replica
 
 ```bash
 npm run deploy --network=local
 echo http://$(dfx canister id frontend).localhost:4943
 ```
 
-## Deployment to Motoko Playground
+## Deployment to Motoko playground
 
 ```bash
 npm run deploy --network=playground
 ```
 
-## Deployment to Internet Computer Mainnet
+## Deployment to Internet Computer mainnet
 Is not tested by now. But it should work. 
 
